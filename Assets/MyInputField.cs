@@ -1,14 +1,22 @@
-
-using System;
-using UnityEngine;
+using UnityEngine.EventSystems;
 
 public class MyInputField : InputFieldOriginal
 {
-    /// <summary>
-    /// Depending on the current selection state, the character will be added either instead of the selected text or to the current caret position
-    /// </summary>
-    /// <param name="c">Character to add</param>
-    internal void AddCharacter(string c)
+    public override void OnSelect(BaseEventData eventData)
     {
+    }
+
+    public override void OnDeselect(BaseEventData eventData)
+    {
+    }
+
+    public override void OnPointerClick(PointerEventData eventData)
+    {
+    }
+
+    public void Refresh()
+    {
+        Select();
+        UpdateLabel();
     }
 }

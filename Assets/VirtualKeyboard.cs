@@ -1,30 +1,31 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
-using UnityEngine.UI;
+﻿using UnityEngine;
 
 public class VirtualKeyboard : MonoBehaviour {
 
-    public MyInputField InputField;
+    [SerializeField]
+    private MyInputField _inputField;
 
     public void KeyPress(string c)
     {
-        InputField.AddCharacter(c);
-        InputField.ActivateInputField();
+        _inputField.ProcessEvent(new Event() { character = c[0] });
+        _inputField.Refresh();
     }
 
-    public void KeyLeft()
-    {
+    public void KeyLeft() => KeyCodePressed(KeyCode.LeftArrow);
 
+    public void KeyRight() => KeyCodePressed(KeyCode.RightArrow);
+
+    public void KeyDelete() => KeyCodePressed(KeyCode.Backspace);
+
+    private void KeyCodePressed(KeyCode keyCode)
+    {
+        _inputField.ProcessEvent(new Event() { keyCode = keyCode });
+        _inputField.Refresh();
     }
 
-    public void KeyRight()
+    private void Start()
     {
-
-    }
-
-    public void KeyDelete()
-    {
-
+        if (!_inputField.isFocused)
+            _inputField.ActivateInputField();
     }
 }
