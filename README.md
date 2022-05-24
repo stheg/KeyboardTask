@@ -1,6 +1,6 @@
 # KeyboardTask
 
-A simple virtual keyboard.
+A simple virtual keyboard in Unity (2020_3_21f).
 
 The challenge was:
 * Focus should remain on the input field when the user interface buttons are pressed.
